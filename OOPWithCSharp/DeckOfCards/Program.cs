@@ -1,12 +1,14 @@
 ﻿using System;
 
-namespace ConsoleApp2
+namespace DeckOfCards
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var card = new Card("4", 12);
+            
+            card.SayCard();
         }
     }
 }
