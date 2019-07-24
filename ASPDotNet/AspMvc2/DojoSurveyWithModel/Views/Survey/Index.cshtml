@@ -1,0 +1,58 @@
+@model Survey
+
+@{
+	string[] languages = new string[]
+	{
+		"C#", "Python", "Java", "Javascript", "Ruby", "C++", "FORTRAN"
+	};
+
+	string[] locations = new string[]
+	{
+		"Fremont", "Big Bear", "San Jose", "Austin", "Denver"
+	};
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Dojo Survey</title>
+</head>
+<body>
+	<div class="container">
+		<div class="form-container">
+			<form action="/survey" method="post">
+				<div class="form-row">
+					<label asp-for="Name">Name</label>
+					<input asp-for="Name" placeholder="name">
+				</div>
+				<div class="form-row">
+					<label asp-for="Location">Dojo Location</label>
+					<select asp-for="Location">
+						@foreach(var place in locations)
+						{
+							<option value="@place">@place</option>
+						}
+					</select>
+				</div>
+				<div class="form-row">
+					<label for="Favorite">Favorite Language</label>
+					<select naasp-forme="Favorite">
+						@foreach(var lang in languages)
+						{
+							<option value="@lang">@lang</option>
+						}
+					</select>
+				</div>
+				<div class="form-row">
+					<label asp-for="Comment">Comment (optional):</label>
+					<textarea asp-for="Comment" id=""></textarea>
+				</div>
+				<input value="Submit" type="Submit">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

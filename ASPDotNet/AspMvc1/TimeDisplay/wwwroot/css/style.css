@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    background-color: aquamarine
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border: 1px solid black;
+    width: 160px;
+    align-items: center;
+    background-color: aqua
+}
+
+.time-box p {
+    font-weight: bold;
+    flex-grow: 2;
+    
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <title>Hello!</title>
+        <link rel="stylesheet" href="css/style.css"/>
+
+    </head>
+    <body>
+        <div class="flex-container">
+            <div class="flex-inner">
+                <nav>
+                    <!-- link text, action, controller -->
+                    @Html.ActionLink("Home", "Index", "Hello")&nbsp;|&nbsp;
+                    @Html.ActionLink("Projects", "Projects", "Hello")&nbsp;|&nbsp;
+                    @Html.ActionLink("Contact", "Contact", "Hello")
+                </nav>
+                <h1>About Me</h1>
+                <div class="left-img">
+                    <img src="images/multiTable.png" alt="multiTable.png">
+                </div>
+                <div class="right-content">
+                    <p>
+                        Lorem ipsum dolor sit amet, in veri tation mel, laboramus hendrerit rationibus id per.
+                        Cetero lobortis adipiscing cu mea. Nobis offendit constituto mei ad. Brute placerat pro an.
+                        Et atqui melius usu, eum at sensibus sapientem neglegentur, nam ad autem affert. Ferri explicari sea id.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

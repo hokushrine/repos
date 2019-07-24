@@ -1,0 +1,21 @@
+<html>
+    <head></head>
+    <body>
+        @{
+           string[] food = {"burrito", "sandwich", "clam chowder", "cookie", "stir fry"};
+                
+            foreach(var meal in food)
+            {
+                // We can render HTML from within C# code!
+                if(meal[0] == 'c')
+                {
+                    <p style="color: red">@meal</p>
+                }
+                else
+                {
+                    <p>@meal</p>
+                }
+            }
+        }
+    </body>
+</html>

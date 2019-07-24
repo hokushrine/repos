@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Survey</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <form action="ResultPost" method="post">
+                <div class="form-row">
+                    <label for="name">Name</label>
+                    <input type="text" name="name"placeholder="name"
+                </div>
+                <div class="form-row">
+                    <label for="location">Dojo Location</label>
+                    <input type="text"  name="location" placeholder="location"
+                </div>
+                <div class="form-row">
+                    <label for="favorite">Favorite Language</label>
+                    <select name="favorite">
+                        <option value="C#">C#</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="C++">C++</option>
+                        <option value="Java">Java</option>
+                        <option value="Python">Python</option>
+                        <option value="COBOL">COBOL</option>
+                        <option value="FORTRAN">FORTRAN</option>
+                    </select>
+                </div>
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
