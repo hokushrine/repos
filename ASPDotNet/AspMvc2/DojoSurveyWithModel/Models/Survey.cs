@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 namespace DojoSurveyWithModel.Models
 {
-    public class Survey
+    public class SurveyModel
     {
         [Required]
         [MinLength(2, ErrorMessage="Name must be 2 or more characters")]

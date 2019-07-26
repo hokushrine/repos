@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="container">
+    <h1>Random Passcode (passcode #@ViewBag.Times)</h1>
+<h3>@ViewBag.Passcode</h3>
+<h4>Hello @ViewBag.User</h4>
+<h4>Message: @ViewBag.Msg</h4>
+<h4>TestInt: @ViewBag.MsgInt</h4>
+<hr>
+<a href="/new">Generate</a>
+</div>

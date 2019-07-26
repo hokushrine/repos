@@ -1,5 +1,3 @@
-@model Survey
-
 @{
 	string[] languages = new string[]
 	{
@@ -12,6 +10,8 @@
 	};
 }
 
+@model SurveyModel
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +23,7 @@
 <body>
 	<div class="container">
 		<div class="form-container">
-			<form action="/survey" method="post">
+			<form action="/surveyForm" method="post">
 				<div class="form-row">
 					<label asp-for="Name">Name</label>
 					<input asp-for="Name" placeholder="name">

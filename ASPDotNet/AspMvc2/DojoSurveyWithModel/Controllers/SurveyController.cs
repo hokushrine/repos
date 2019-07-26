@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using DojoSurveyWithModel.Models;
+
 namespace DojoSurveyWithModel.Controllers
 {
     public class SurveyController : Controller
@@ -18,8 +18,8 @@ namespace DojoSurveyWithModel.Controllers
             return View();
         }
 
-        [HttpPost("survey")]
-        public IActionResult ResultPost(Survey mySurvey)
+        [HttpPost("surveyForm")]
+        public IActionResult ResultPost(SurveyModel mySurvey)
         {
             if(ModelState.IsValid)
             {

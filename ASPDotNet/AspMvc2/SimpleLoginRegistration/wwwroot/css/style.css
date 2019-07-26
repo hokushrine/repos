@@ -1,0 +1,17 @@
+.flex-container
+{
+    display: flex;
+    flex-direction: row;
+    flex: 50%;
+}
+
+.form-group{
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    padding: .5em;
+}
+
+span{
+    color: red;
+}
