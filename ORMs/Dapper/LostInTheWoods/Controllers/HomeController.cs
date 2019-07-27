@@ -22,11 +22,12 @@ namespace LostInTheWoods.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult SubmitTrail(Trail trail)
         {
             ViewData["Message"] = "Your contact page.";
+            System.Console.WriteLine(trail.Name);
 
-            return View();
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()
