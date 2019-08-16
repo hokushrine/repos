@@ -1,0 +1,24 @@
+﻿@model List<Chef>
+
+<h1>Chefs | @Html.ActionLink("Dishes", "ShowDishes")</h1>
+
+
+<table id="myTable" class="table" cellspacing="0">
+        <thead>
+            <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th># of Dishes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var prop in Model)
+                {
+                    <tr>
+                        <td>@prop.FullName</td>
+                        <td>@prop.Age</td>
+                        <td>@prop.CreatedDishes.Count</td>
+                    </tr>
+                }
+        </tbody>
+    </table>

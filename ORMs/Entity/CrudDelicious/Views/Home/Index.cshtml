@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Dish>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h1>Welcome to CRUDelicious!</h1>
+    <div>
+        <h3>Check out some of our recent dishes!</h3>
+        @Html.ActionLink("Add a dish", "new", "home")
+        <br>
+    </div>
+    <div>
+        @foreach(var dish in Model)
+        {
+        <p><a asp-controller="Home" 
+            asp-action="Show" 
+            asp-route-dishId="@dish.DishID">@dish.Name</a> by @dish.Chef</p>
+        }
+    </div>
+</div>

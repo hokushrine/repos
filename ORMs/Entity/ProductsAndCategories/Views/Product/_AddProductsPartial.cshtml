@@ -1,0 +1,22 @@
+@model Product
+
+<h1>Products | <a asp-controller="Category" asp-action="Index">Categories</a></h1>
+<h2>New Product</h2>
+<form asp-action="Create" asp-controller="Product" method="post">
+    <div class="form-group">
+        <span asp-validation-for="Name"></span>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control">
+    </div>
+     <div class="form-group">
+        <span asp-validation-for="Description"></span>
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control">
+    </div>
+    <div class="form-group">
+        <span asp-validation-for="Price"></span>
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control">
+    </div>
+    <input type="submit" value="Add Product">
+</form>

@@ -1,0 +1,41 @@
+﻿@model Dish
+
+@{
+    ViewData["Title"] = "New Dish Submission";
+}
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <form action="/create" method="post">
+        <div class="form-row">
+            <div class="form-group">
+                <label asp-for="Chef"></label>
+                <input class="form-control" asp-for="Chef">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input class="form-control" asp-for="Name">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label asp-for="Calories"></label>
+                <input class="form-control" asp-for="Calories">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label asp-for="Tastiness"></label>
+                <input asp-for="Tastiness">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <textarea asp-for="Description"></textarea>
+            </div>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>

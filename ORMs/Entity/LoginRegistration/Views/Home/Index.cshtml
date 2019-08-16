@@ -1,0 +1,34 @@
+﻿@model User
+<h1>Register</h1>
+<div>
+    @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+    {
+        <!-- @Html.ValidationSummary(false, "test", new { @class = "text-danger" }) -->
+        <div class="form-group">
+            <!-- <span asp-validation-for="FirstName"></span> -->
+            @Html.ValidationMessage("FirstName", "", new { @class = "text-danger" })
+            @Html.LabelFor(m => m.FirstName)
+            @Html.TextBoxFor(m => m.FirstName, new { Class="form-control" })
+        </div>
+        <div class="form-group">
+            <span asp-validation-for="LastName"></span>
+            @Html.LabelFor(m => m.LastName)
+            @Html.TextBoxFor(m => m.LastName, new { Class="form-control" })
+        </div>
+        <div class="form-group">
+            <span asp-validation-for="Email"></span>
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { Class="form-control" })
+        </div>
+        <div class="form-group">
+            <span asp-validation-for="Password"></span>
+            @Html.LabelFor(m => m.Password)
+            @Html.TextBoxFor(m => m.Password, new { Class="form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword)
+            @Html.TextBoxFor(m => m.ConfirmPassword, new { Class="form-control" })
+        </div>
+        <input type="submit" value="Register" />
+    }
+</div>

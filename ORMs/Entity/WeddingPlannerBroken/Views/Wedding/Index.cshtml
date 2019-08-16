@@ -1,0 +1,63 @@
+@model List<Wedding>
+
+<h1>All Weddings page</h1>
+<button><a asp-controller="Wedding" asp-action="NewWedding">New Wedding</a></button>
+<p>To be added: a table of weddings like so:</p>
+<table>
+        <tr>
+            <th>Wedding</th>
+            <th>Date</th>
+            <th>Guest Count</th>
+            <th>Action</th>
+        </tr>
+    <tbody>
+        <tr>
+            <td>Jim & Pam</td>
+            <td>Oct 12 2017</td>
+            <td>5</td>
+            <td><a href="">RSVP</a></td>
+        </tr>
+        <tr>
+            <td>Jacklyn & Terry</td>
+            <td>Oct 12 2017</td>
+            <td>6</td>
+            <td><a href="">RSVP</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>Wedding</tr>
+        <tr>Date</tr>
+        <tr>Guests</tr>
+        <tr>Action</tr>
+    </thead>
+    <tbody>
+        <td>@Wedding.</td>
+            <td>@Wedding.Responses.Count()</td>
+            @{
+                if(Wedding.UserId == ViewBag.UserId)
+                {
+                    <td><a asp-controller="Wedding" 
+                        asp-action="Remove"
+                        asp-route-WeddingId="@Wedding.WeddingId">DELETE</a></td>
+
+                }
+                else if(Wedding.Responses.Any(r => r.UserId == ViewBag.UserId))
+                {
+                    <td><a asp-controller="Response" 
+                        asp-action="RSVP" 
+                        asp-route-WeddingId="@Wedding.WeddingId" 
+                        asp-route-status="remove">Un-RSVP</a></td>
+                }
+                else
+                {
+                     <td><a asp-controller="Response" 
+                        asp-action="RSVP" 
+                        asp-route-WeddingId="@Wedding.WeddingId" 
+                        asp-route-status="add">RSVP</a></td>
+                }
+            }
+    </tbody>
+</table>

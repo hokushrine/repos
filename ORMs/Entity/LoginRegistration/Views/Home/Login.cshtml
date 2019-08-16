@@ -1,0 +1,16 @@
+@model LoginUser
+
+<h1>Login</h1>
+<div>
+    <form action="login" method="post">
+        <div class="form-group">
+            <label asp-for="EmailAttempt"></label>
+            <input class="form-control" asp-for="EmailAttempt">
+        </div>
+        <div class="form-group">
+            <label asp-for="PasswordAttempt"></label>
+            <input class="form-control" asp-for="PasswordAttempt">
+        </div>
+        <button>Login</button>
+    </form>
+</div>

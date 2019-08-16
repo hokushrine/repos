@@ -263,3 +263,11 @@ Vidly
 ASPDotNet/AspMvc2/RandomPasscode/appsettings.json
 ASPDotNet/AspMvc2/RandomPasscode/appsettings.Development.json
 ORMs/Dapper/LostInTheWoods/appsettings.Development.json
+ORMs/BeltPrep/TheWall/appsettings.json
+ORMs/Entity/BankAccountsProj/appsettings.json
+ORMs/Entity/ChefsNDishes/appsettings.json
+ORMs/Entity/CrudDelicious/appsettings.json
+ORMs/Entity/LoginRegistration/appsettings.json
+ORMs/Entity/ProductsAndCategories/appsettings.json
+ORMs/Entity/WeddingPlannerBroken/appsettings.json
+ORMs/Entity/WeddingPlanner/appsettings.json

@@ -1,0 +1,31 @@
+@model List<Dish>
+
+<h1>@Html.ActionLink("Chefs", "Index") | Dishes</h1>
+<table id="myTable" class="table" cellspacing="0">
+        <thead>
+            <tr>
+                @foreach (var property in Model)
+                {
+                    
+                    <th>@Html.DisplayNameFor(m => property.Name)</th>
+                    <th>@Html.DisplayNameFor(m => property.Creator.FullName)</th>
+                    <th>@Html.DisplayNameFor(m => property.Tastiness)</th>
+                    <th>@Html.DisplayNameFor(m => property.Calories)</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                @foreach (var property in Model)
+                {
+                    <td>@property.Name</td>
+                    <td>@property.Creator.FullName</td>
+                    <td>@property.Tastiness</td>
+                    <td>@property.Calories</td>
+                }
+                </tr>
+            }
+        </tbody>
+    </table>

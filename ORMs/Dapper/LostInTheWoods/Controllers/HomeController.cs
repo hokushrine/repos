@@ -10,6 +10,8 @@ namespace LostInTheWoods.Controllers
 {
     public class HomeController : Controller
     {
+
+        [HttpGet("")]
         public IActionResult Index()
         {
             return View();
@@ -22,15 +24,16 @@ namespace LostInTheWoods.Controllers
             return View();
         }
 
-        public IActionResult SubmitTrail(Trail trail)
-        {
-            ViewData["Message"] = "Your contact page.";
-            System.Console.WriteLine(trail.Name);
+        // public IActionResult SubmitTrail(Trail trail)
+        // {
+        //     ViewData["Message"] = "Your contact page.";
+        //     System.Console.WriteLine(trail.Name);
 
-            return RedirectToAction("Index");
-        }
+        //     return RedirectToAction("Index");
+        // }
 
-        public IActionResult Privacy()
+        [HttpGet("/new")]
+        public IActionResult New()
         {
             return View();
         }
