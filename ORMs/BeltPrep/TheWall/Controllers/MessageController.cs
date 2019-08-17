@@ -31,15 +31,19 @@ namespace TheWall.Controllers
             }
 
             var allMessages = _dbContext.Messages
-                .Include(c => c.Comments)
-                .ThenInclude(b => b.CommentBody)
                 .Include(u => u.Creator)
                 .OrderByDescending(m => m.CreatedAt)
                 .ToList();
 
-            
+            var allComments = _dbContext.Comments
+                .Include(m => m.Message)
+                .Include(u => u.Creator)
+                .OrderByDescending(m => m.CreatedAt)
+                .ToList();
+
             WrapperModel wrapper = new WrapperModel();
             wrapper.Messages = allMessages;
+            wrapper.Comments = allComments;
             return View(wrapper);
         }
 

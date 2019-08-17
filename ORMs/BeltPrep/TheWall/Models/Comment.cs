@@ -8,6 +8,7 @@ namespace TheWall.Models
     {
         public int Id { get; set; }
         [Required]
+        [Display(Name="Comment")]
         public string CommentBody { get; set; }
         public int UserId { get; set; }
         public int MessageId { get; set; }

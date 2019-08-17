@@ -9,6 +9,7 @@ namespace TheWall.Models
     {
         public int id { get; set; }
         [Required]
+        [Display(Name="Message")]
         public string MessageBody { get; set; }
         public int UserId { get; set; }
         [DataType(DataType.Date)]

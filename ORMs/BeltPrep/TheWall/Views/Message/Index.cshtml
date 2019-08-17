@@ -19,10 +19,11 @@
             @msg.MessageBody
         </p>
         <div>
-            @foreach(var comment in Model.Messages)
+            @foreach(var comment in Model.Comments)
             {
                 <div class="row">
                     <p>
+                        @comment.CommentBody
                     </p>
                 </div>
             }
@@ -42,4 +43,3 @@
             <!-- for loop here to go through existing comments -->
     </div>
 }
-@Model.Messages.Comments.CommentBody
