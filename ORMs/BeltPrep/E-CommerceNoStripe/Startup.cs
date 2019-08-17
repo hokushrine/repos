@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using E_CommerceNoStripe.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace E_CommerceNoStripe
 {
@@ -26,11 +28,13 @@ namespace E_CommerceNoStripe
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
 
+            services.AddSession();
+            services.AddDbContext<EcomContext>(o => o.UseMySql(Configuration["DBInfo:ConnectionString"]));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -46,6 +50,7 @@ namespace E_CommerceNoStripe
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseSession();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
