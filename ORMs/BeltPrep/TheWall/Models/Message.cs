@@ -11,6 +11,9 @@ namespace TheWall.Models
         [Required]
         public string MessageBody { get; set; }
         public int UserId { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
         // Associations
         public User Creator { get; set; }

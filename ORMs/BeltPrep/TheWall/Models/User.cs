@@ -22,6 +22,8 @@ namespace TheWall.Models
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
+        public string FullName => $"{FirstName} {LastName}";
+
         // Associations
         public List<Message> Messages {get; set;}
         public List<Comment> Comments {get; set;}

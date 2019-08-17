@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TheWall.Models;
 
 namespace TheWall.Migrations
 {
     [DbContext(typeof(WallContext))]
-    partial class WallContextModelSnapshot : ModelSnapshot
+    [Migration("20190816233300_AddedNavPropAndDateTime")]
+    partial class AddedNavPropAndDateTime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

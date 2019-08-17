@@ -1,0 +1,8 @@
+@model List<Message>
+
+    @foreach (var msg in Model)
+    {
+        <div class="row">
+            <p>@msg.MessageBody</p>
+        </div>
+    }

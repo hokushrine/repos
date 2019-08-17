@@ -1,0 +1,13 @@
+@model WrapperModel
+<div>
+    <form asp-controller="Comment" asp-action="Create" method="post">
+        <div class="form-group">
+            <div class="form-row">
+                <label asp-for="@Model.Comment.CommentBody"></label>
+                <textarea asp-for="@Model.Comment.CommentBody" class="form-control"></textarea>
+                <input type="hidden" asp-for="@Model.Message.id" value="">
+            </div>
+        </div>
+        <button>Submit</button>
+    </form>
+</div>

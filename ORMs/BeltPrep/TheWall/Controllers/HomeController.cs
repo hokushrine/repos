@@ -14,8 +14,8 @@ namespace TheWall.Controllers
     {
         public int? UserSession
         {
-            get { return HttpContext.Session.GetInt32("id"); }
-            set { HttpContext.Session.SetInt32("id", (int)value); }
+            get { return HttpContext.Session.GetInt32("UserId"); }
+            set { HttpContext.Session.SetInt32("UserId", (int)value); }
         }
 
         private WallContext _dbContext;
@@ -28,7 +28,7 @@ namespace TheWall.Controllers
             return View();
         }
 
-        [HttpPost("create/user")]
+        [HttpPost("user/create")]
         public IActionResult Create(User newUser)
         {
             if(ModelState.IsValid)
@@ -62,6 +62,7 @@ namespace TheWall.Controllers
                 if(existingUser is null)
                 {
                     ModelState.AddModelError("Email", "Invalid Email/Password");
+                    return View("Index", "Home");
                 }
 
                 //check stored vs submitted password
@@ -70,12 +71,13 @@ namespace TheWall.Controllers
                 if( result == PasswordVerificationResult.Failed)
                 {
                     ModelState.AddModelError("Password", "Invalid Email/Password");
+                    return View("Index", "Home");
                 }
 
                 UserSession = existingUser.Id;
                 return RedirectToAction("Index", "Message");
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet("logout")]

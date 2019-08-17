@@ -1,0 +1,12 @@
+@model Message
+<div>
+    <form asp-controller="Message" asp-action="Create" method="post">
+        <div class="form-group">
+            <div class="form-row">
+                <label asp-for="MessageBody"></label>
+                <textarea asp-for="MessageBody" class="form-control"></textarea>
+            </div>
+        </div>
+        <button>Submit</button>
+    </form>
+</div>

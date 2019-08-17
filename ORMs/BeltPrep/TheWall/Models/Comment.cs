@@ -11,5 +11,11 @@ namespace TheWall.Models
         public string CommentBody { get; set; }
         public int UserId { get; set; }
         public int MessageId { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+        // Associations
+        public User Creator { get; set; }
+        public Message Message { get; set; }
     }
 }

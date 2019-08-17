@@ -1,1 +1,45 @@
+@model WrapperModel
 <h1>The Wall</h1>
+<div>
+    <form asp-controller="Message" asp-action="Create" method="post">
+        <div class="form-group">
+            <div class="form-row">
+                <label asp-for="Message.MessageBody"></label>
+                <textarea asp-for="Message.MessageBody" class="form-control"></textarea>
+            </div>
+        </div>
+        <button>Submit</button>
+    </form>
+</div>
+@foreach (var msg in Model.Messages)
+{
+    <div class="row">
+        <p>
+            <span>@msg.Creator.FullName</span><br>
+            @msg.MessageBody
+        </p>
+        <div>
+            @foreach(var comment in Model.Messages)
+            {
+                <div class="row">
+                    <p>
+                    </p>
+                </div>
+            }
+        </div>
+        <div>
+        <form asp-controller="Comment" asp-action="Create" method="post">
+            <div class="form-group">
+                <div class="form-row">
+                    <label asp-for="@Model.Comment.CommentBody"></label>
+                    <textarea asp-for="@Model.Comment.CommentBody" class="form-control"></textarea>
+                    <input type="hidden" asp-for="@Model.Comment.MessageId" value="@msg.id">
+                </div>
+            </div>
+            <button>Submit</button>
+        </form>
+</div>
+            <!-- for loop here to go through existing comments -->
+    </div>
+}
+@Model.Messages.Comments.CommentBody
