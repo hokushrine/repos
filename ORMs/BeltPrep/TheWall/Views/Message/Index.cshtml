@@ -11,35 +11,40 @@
         <button>Submit</button>
     </form>
 </div>
+<hr>
 @foreach (var msg in Model.Messages)
 {
     <div class="row">
         <p>
-            <span>@msg.Creator.FullName</span><br>
+            <span><strong>@msg.Creator.FullName</strong> @msg.CreatedAt.ToString("MMM dd, yyyy")</span><br>
             @msg.MessageBody
         </p>
+
         <div>
             @foreach(var comment in Model.Comments)
             {
                 <div class="row">
                     <p>
+                        <span><strong>@comment.Creator.FullName</strong> @comment.CreatedAt.ToString("MMM dd, yyyy")</span><br>
                         @comment.CommentBody
                     </p>
                 </div>
             }
         </div>
+
         <div>
-        <form asp-controller="Comment" asp-action="Create" method="post">
-            <div class="form-group">
-                <div class="form-row">
-                    <label asp-for="@Model.Comment.CommentBody"></label>
-                    <textarea asp-for="@Model.Comment.CommentBody" class="form-control"></textarea>
-                    <input type="hidden" asp-for="@Model.Comment.MessageId" value="@msg.id">
+            <form asp-controller="Comment" asp-action="Create" method="post">
+                <div class="form-group">
+                    <div class="form-row">
+                        <label asp-for="@Model.Comment.CommentBody"></label>
+                        <span asp-validation-for="Comment"></span>
+                        <textarea asp-for="@Model.Comment.CommentBody" class="form-control"></textarea>
+                        <input type="hidden" asp-for="@Model.Comment.MessageId" value="@msg.id">
+                        <button>Submit</button>
+                    </div>
                 </div>
-            </div>
-            <button>Submit</button>
-        </form>
-</div>
-            <!-- for loop here to go through existing comments -->
+            </form>
+        </div>
+        <hr>
     </div>
 }

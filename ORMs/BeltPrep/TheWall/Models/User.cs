@@ -15,13 +15,18 @@ namespace TheWall.Models
         [Display(Name="Last Name")]
         public string LastName { get; set; }
         [Required]
+        [EmailAddress]
         [Display(Name="Email")]
         public string Email { get; set; }
         [Required]
+        [DataType(DataType.Password)]
+        [Display(Name="Confirm Password")]
+        [MinLength(8, ErrorMessage="Password minimum length is 8 characters")]
         public string Password { get; set; }
         [NotMapped]
+        [DataType(DataType.Password)]
         [Compare("Password")]
-        [Display(Name="Password")]
+        [Display(Name="Confirm Password")]
         public string ConfirmPassword { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
@@ -35,7 +40,13 @@ namespace TheWall.Models
 
     public class LoginUser
     {
+        [Required]
+        [EmailAddress]
+        [Display(Name="Email")]
         public string EmailAttempt { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name="Password")]
         public string PasswordAttempt { get; set; }
     }
 }

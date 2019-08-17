@@ -29,6 +29,7 @@ namespace TheWall.Controllers
         {
             if(ModelState.IsValid)
             {
+                
                 Comment newComment = modelData.Comment;
                 newComment.UserId = loggedInUser.Id;
                 _dbContext.Add(newComment);
