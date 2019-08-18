@@ -18,7 +18,13 @@ namespace E_CommerceNoStripe
         [HttpPost("customer/create")]
         public IActionResult Create(CustomerViewModel modelData)
         {
-            
+            if(ModelState.IsValid)
+            {
+                Customer newCustomer = modelData.NewCustomer;
+
+                _dbContext.Add(newCustomer);
+                _dbContext.SaveChanges();
+            }
             return RedirectToAction("Index", "Customer");
         }
     }

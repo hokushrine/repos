@@ -3,7 +3,7 @@
 <h1>Customers</h1>
 <div class="new-customer">
     <!-- form to add new customer -->
-    <form action="">
+    <form asp-controller="Customer" asp-action="Create" method="post">
         <div class="form-group">
             <label asp-for="NewCustomer.Name"></label>
             <input asp-for="NewCustomer.Name" class="form-control">
