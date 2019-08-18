@@ -1,5 +1,20 @@
+@model OrderViewModel
+
 <div class="new-order">
     <!-- form to add new orders -->
+    <form asp-controller="Order" asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="NewOrder.Customer"></label>
+                <select asp-for="NewOrder.Customer.Name"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewOrder.Quantity"></label>
+                <div class="row"></div>
+                <input asp-for="NewOrder.Quantity" class="form-control">
+                <select asp-for="NewOrder.Product.Name"></select>
+            </div>
+            <button type="submit" class="btn btn-primary">Order</button>
+        </form>
 </div>
 <div class="orders">
     <!-- table of orders -->

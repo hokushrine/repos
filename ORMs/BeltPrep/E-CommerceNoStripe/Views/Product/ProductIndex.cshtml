@@ -1,8 +1,37 @@
+@model ProductViewModel
+
 <div class="container">
     <div class="sidebar">
         <!-- form to add new product -->
+        <form asp-controller="Product" asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="NewProduct.Name"></label>
+                <input asp-for="NewProduct.Name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="NewProduct.Description"></label>
+                <textarea asp-for="NewProduct.Description" class="form-control" cols="5" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewProduct.Quantity"></label>
+                <input asp-for="NewProduct.Quantity" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="NewProduct.Image"></label>
+                <input asp-for="NewProduct.Image" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
     </div>
     <div class="content">
         <!-- for each to display products -->
     </div>
 </div>
+
+<!-- 
+     public string Name { get; set; }
+        public string Description { get; set; }
+        public int Quanity { get; set; }
+        public string Image { get; set; }
+
+ -->
