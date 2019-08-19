@@ -1,4 +1,38 @@
-﻿<h1>Dashboard</h1>
-<div class="products"></div>
-<div class="recent-orders"></div>
-<div class="new-customers"></div>
+﻿@model DashboardViewModel
+
+<h1>Dashboard</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+
+            <div class="card-deck">
+                    @foreach (var prod in Model.Products)
+                    {
+                        <div class="card">
+                            <img class="card-img-top img-fluid" src="@prod.Image" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">@prod.Name</h5>
+                                <p class="card-text"><small class="text-muted">@prod.Quantity</small></p>
+                            </div>
+                        </div>
+                    }
+            </div>
+            <a asp-controller="Product" asp-action="Index">Show all products</a>
+        </div>
+    </div>
+</div>
+<div class="recent-orders">
+    <h4>Recent Orders</h4>
+    @foreach (var o in Model.Orders)
+    {
+        <p>@o.Customer.Name purchased @o.Quantity @o.Product.Name</p>
+    }
+</div>
+<div class="new-customers">
+    <h4>New Customers</h4>
+    @foreach (var c in Model.Customers)
+    {
+        <p>@c.Name joined the store (@c.CreatedAt ...)</p>
+    }
+    <a asp-controller="Customer" asp-action="Index">Show all customers</a>
+</div>
