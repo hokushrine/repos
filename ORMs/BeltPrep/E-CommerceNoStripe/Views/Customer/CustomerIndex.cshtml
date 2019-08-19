@@ -28,7 +28,7 @@
           <tr>
               <td>@c.Name</td>
               <td>@c.CreatedAt.ToShortDateString()</td>
-            <td><button>Remove</button></td>
+              <td><button><a asp-controller="Customer" asp-action="Delete" asp-route-customerId="@c.Id">Delete</a></button></td>
           </tr>
           
       }

@@ -31,5 +31,14 @@ namespace E_CommerceNoStripe
             }
             return RedirectToAction("Index", "Customer");
         }
+
+        [HttpGet("delete/{customerId}")]
+        public IActionResult Delete(int customerId)
+        {
+            Customer toDelete = _dbContext.Customers.SingleOrDefault(c => c.Id == customerId);
+            _dbContext.Customers.Remove(toDelete);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index", "Customer");
+        }
     }
 }
