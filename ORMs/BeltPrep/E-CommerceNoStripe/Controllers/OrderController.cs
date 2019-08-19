@@ -34,13 +34,13 @@ namespace E_CommerceNoStripe
                 // query the db for the quantity of the product
                 var existingQuantity = _dbContext.Products.SingleOrDefault(prod => prod.Id == newOrder.ProductId);
                 // System.Console.WriteLine(new string('*', 50));
-                // System.Console.WriteLine("prod name: ",existingQuantity.Name);
-                // System.Console.WriteLine("prodId: ", newOrder.ProductId);
-                // System.Console.WriteLine("neworder quant: ", newOrder.Product.Quantity);
-                // System.Console.WriteLine("prod quant in db: ",existingQuantity.Quantity);
-                // productQuantity.Quantity -= newOrder.Product.Quantity;
-                // _dbContext.Add(newOrder);
-                // _dbContext.SaveChanges();
+                // System.Console.WriteLine($"prodId: {newOrder.ProductId}");
+                // System.Console.WriteLine($"prod name: {existingQuantity.Name}");
+                // System.Console.WriteLine($"neworder quant: {newOrder.Quantity}");f
+                existingQuantity.Quantity -= newOrder.Quantity;
+                // System.Console.WriteLine($"prod quant in db: {existingQuantity.Quantity}");
+                _dbContext.Add(newOrder);
+                _dbContext.SaveChanges();
                 return RedirectToAction("Index", "Order");
             }
             return View("Index", "Order");
