@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerceNoStripe.Migrations
 {
     [DbContext(typeof(EcomContext))]
-    [Migration("20190818015113_FixedQuanitityColumnTypo")]
-    partial class FixedQuanitityColumnTypo
+    [Migration("20190819181554_ProperMigration")]
+    partial class ProperMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,11 +40,15 @@ namespace ECommerceNoStripe.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("CreatedAt");
+
                     b.Property<int>("CustomerId");
 
                     b.Property<int>("ProductId");
 
                     b.Property<int>("Quantity");
+
+                    b.Property<DateTime>("UpdatedAt");
 
                     b.HasKey("Id");
 

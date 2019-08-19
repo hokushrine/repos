@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ECommerceNoStripe.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class ProperMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,7 +31,7 @@ namespace ECommerceNoStripe.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Quanity = table.Column<int>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false),
                     Image = table.Column<string>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: false)
@@ -49,7 +49,9 @@ namespace ECommerceNoStripe.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Quantity = table.Column<int>(nullable: false),
                     CustomerId = table.Column<int>(nullable: false),
-                    ProductId = table.Column<int>(nullable: false)
+                    ProductId = table.Column<int>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -1,21 +1,48 @@
 @model OrderViewModel
 
-<div class="new-order">
-    <!-- form to add new orders -->
-    <form asp-controller="Order" asp-action="Create" method="post">
-            <div class="form-group">
-                <label asp-for="NewOrder.Customer"></label>
-                <select asp-for="NewOrder.Customer.Name"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="NewOrder.Quantity"></label>
-                <div class="row"></div>
-                <input asp-for="NewOrder.Quantity" class="form-control">
-                <select asp-for="NewOrder.Product.Name"></select>
-            </div>
-            <button type="submit" class="btn btn-primary">Order</button>
-        </form>
-</div>
-<div class="orders">
-    <!-- table of orders -->
-</div>
+
+<form asp-controller="Order" asp-action="Create">
+    <div class="row form-group">
+        <label asp-for="NewOrder.Customer"></label>
+        <select asp-for="NewOrder.CustomerId"  class="form-control col-2">
+            @foreach (var customer in Model.Customers)
+            {
+                <option value="@customer.Id">@customer.Name</option>
+            }
+        </select>
+    </div>
+    <div class="row form-group">
+        <label asp-for="NewOrder.Quantity"></label>
+        <input asp-for="NewOrder.Quantity" class="col-2">
+        <label asp-for="NewOrder.Product"></label>
+        <select asp-for="NewOrder.ProductId" class="col-2">
+            @foreach (var prod in Model.Products)
+            {
+                <option value="@prod.Id">@prod.Name</option>
+            }
+        </select>
+        <button type="submit" class="btn btn-primary">Order</button>
+    </div>
+</form>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      @foreach (var order in Model.Orders)
+      {
+          <td>@order.Customer.Name</td>
+          <td>@order.Product.Name</td>
+          <td>@order.Product.Name</td>
+          <td>@order.CreatedAt.ToShortDateString()</td>
+      }
+    </tr>
+  </tbody>
+</table>

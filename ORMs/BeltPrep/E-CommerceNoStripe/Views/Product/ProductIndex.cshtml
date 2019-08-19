@@ -1,9 +1,10 @@
 @model ProductViewModel
+<head><link rel="stylesheet" href="~/css/style.css"></head>
 
-<div class="container">
-    <div class="sidebar">
-        <!-- form to add new product -->
-        <form asp-controller="Product" asp-action="Create" method="post">
+<div class="row">
+    <!-- Add a new product -->
+  <div class="col-xs-6 col-md-3">
+    <form asp-controller="Product" asp-action="Create" method="post">
             <div class="form-group">
                 <label asp-for="NewProduct.Name"></label>
                 <input asp-for="NewProduct.Name" class="form-control">
@@ -22,16 +23,24 @@
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>
-    </div>
-    <div class="content">
-        <!-- for each to display products -->
-    </div>
+  </div>
+  <!-- Display existing products -->
+  <div class="col-md-6">
+      @foreach (var prod in Model.Products)
+        {
+            <div class="card-columns">
+                <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="@prod.Image" alt="Card image cap">
+                <div class="card-body"> 
+                    <h5 class="card-title">@prod.Name</h5>
+                    <p class="card-text">(@prod.Quantity left)</p>
+                </div>
+            </div>
+        </div>
+        }
+  </div>
 </div>
 
-<!-- 
-     public string Name { get; set; }
-        public string Description { get; set; }
-        public int Quanity { get; set; }
-        public string Image { get; set; }
-
- -->
+<div class="card-columns">
+    
+</div>

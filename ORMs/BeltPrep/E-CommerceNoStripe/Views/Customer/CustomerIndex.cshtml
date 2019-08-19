@@ -13,4 +13,25 @@
 </div>
 <div class="customers">
     <!-- table of customers -->
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Date Created</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var c in Model.Customers)
+      {
+          <!-- <td>@c.</td> -->
+          <tr>
+              <td>@c.Name</td>
+              <td>@c.CreatedAt.ToShortDateString()</td>
+            <td><button>Remove</button></td>
+          </tr>
+          
+      }
+  </tbody>
+</table>
 </div>

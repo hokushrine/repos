@@ -38,11 +38,15 @@ namespace ECommerceNoStripe.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("CreatedAt");
+
                     b.Property<int>("CustomerId");
 
                     b.Property<int>("ProductId");
 
                     b.Property<int>("Quantity");
+
+                    b.Property<DateTime>("UpdatedAt");
 
                     b.HasKey("Id");
 
