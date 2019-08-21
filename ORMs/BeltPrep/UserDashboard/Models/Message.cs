@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace UserDashboard
+namespace UserDashboard.Models
 {
     public class Message
     {

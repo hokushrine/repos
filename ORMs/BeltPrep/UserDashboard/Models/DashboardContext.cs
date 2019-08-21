@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using UserDashboard.Models;
 
 namespace UserDashboard
 {

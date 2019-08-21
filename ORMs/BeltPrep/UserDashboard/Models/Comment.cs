@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace UserDashboard
+namespace UserDashboard.Models
 {
     public class Comment
     {

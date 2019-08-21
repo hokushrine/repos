@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using UserDashboard.Models;
+
 
 namespace UserDashboard.Controllers
 {
+
     public class HomeController : Controller
     {
         public int? UserSession
@@ -17,6 +21,12 @@ namespace UserDashboard.Controllers
             get { return HttpContext.Session.GetInt32("UserId"); }
             set { HttpContext.Session.SetInt32("UserId", (int)value); }
         }
+        private User loggedInUser
+        {
+            get { return _dbContext.Users.FirstOrDefault(u => u.Id == UserSession);}
+        }
+
+        
         private DashboardContext _dbContext;
         public HomeController(DashboardContext context)
         {
@@ -60,7 +70,7 @@ namespace UserDashboard.Controllers
         {
             if(ModelState.IsValid)
             {
-                // check if the user is in the db
+                // Check if the user is in the db
                 var existingUser = _dbContext.Users.FirstOrDefault(u => u.Email == returningUser.EmailAttempt);
                 if(existingUser is null)
                 {
@@ -97,6 +107,26 @@ namespace UserDashboard.Controllers
         public IActionResult Dashboard()
         {
             return View();
+        }
+
+        [HttpGet("users/{Id}")]
+        public IActionResult Show()
+        {
+            return View();
+        }
+
+        
+        // Check if user is admin
+        [HttpGet("delete/{UserID}")]
+        public IActionResult Delete(User toDelete)
+        {
+            if(loggedInUser.IsAdmin)
+            {
+                _dbContext.Remove(toDelete);
+                _dbContext.SaveChanges();
+                return RedirectToAction("Show");
+            }
+            return View("Show");
         }
         
 

@@ -1,4 +1,6 @@
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using UserDashboard.Models;
 
 namespace UserDashboard
 {
@@ -6,9 +8,17 @@ namespace UserDashboard
     [Route("admin")]
     public class AdminController : Controller
     {
+        private DashboardContext _dbContext;
+        public AdminController(DashboardContext context)
+        {
+            _dbContext = context;
+        }
         public IActionResult Index()
         {
-            return View("Index", "Admin");
+            var allUsers = _dbContext.Users.ToList();
+            var vm = new UserViewModel();
+            vm.allUsers = allUsers;
+            return View(vm);
         }
     }
 }
