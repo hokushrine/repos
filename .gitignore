@@ -279,3 +279,5 @@ BeltExam/BeltExam/appsettings.json
 BeltExam/BeltExam/appsettings.json
 Projects/SignalRChat/appsettings.json
 Projects/SignalRChat/appsettings.Development.json
+SecurityIdentity/SecureLogReg/appsettings.json
+SecurityIdentity/SecureLogReg/appsettings.Development.json
