@@ -1,0 +1,25 @@
+@model NewAuctionViewModel
+
+<div class="row">
+    <div class="col-4">
+        <h1>@Model.AuctionItem.ProductName</h1>
+    </div>
+    <div class="col-2"><span>Created by: @Model.AuctionItem.Creator.Username</span></div>
+</div>
+<span>Time remaining: @Model.AuctionItem.EndDate</span>
+<p>@Model.AuctionItem.ProductDesc</p>
+<div class="row">
+    <p>Starting Bid: @Model.AuctionItem.StartingBid</p>
+    <div class="col-4">
+        <p>Current highest bid: @Model.AuctionItem.HighestBid</p>
+    </div>
+    <div class="col-4">By: @Model.AuctionItem.Creator.Username</div>
+</div>
+
+<p>Bid must be greater than starting bid</p>
+<form asp-controller="Auction" asp-action="NewBid">
+    <span asp-validation-for="@Model.NewBidder.Bid"></span>
+    <input asp-for="@Model.NewBidder.Bid" Placeholder="Your bid goes here...">
+    <input type="hidden" asp-for="@Model.NewBidder.AuctionId" value="@Model.AuctionItem.Id">
+    <button>Submit</button>
+</form>

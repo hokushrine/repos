@@ -1,0 +1,30 @@
+@model Auction
+
+<h1>New Auction</h1>
+<div class="row">
+    <!-- Add a new Auction -->
+  <div class="col-xs-6 col-md-3">
+    <form asp-controller="Auction" asp-action="Create" method="post">
+            <div class="form-group">
+                <span asp-validation-for="ProductName"></span>
+                <label asp-for="ProductName"></label>
+                <input asp-for="ProductName" class="form-control">
+            </div>
+            <div class="form-group">
+                <span asp-validation-for="StartingBid"></span>
+                <label asp-for="StartingBid"></label>
+                <input asp-for="StartingBid" class="form-control">
+            </div>
+            <div class="form-group">
+                <span asp-validation-for="ProductDesc"></span>
+                <label asp-for="ProductDesc"></label>
+                <textarea asp-for="ProductDesc" class="form-control" cols="5" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <span asp-validation-for="EndDate"></span>
+                <label asp-for="EndDate"></label>
+                <input asp-for="EndDate" class="form-control" cols="5" rows="4">
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+  </div>

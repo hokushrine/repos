@@ -1,0 +1,29 @@
+@model DashboardViewModel
+
+<h1>Current Auctions</h1>
+
+<a asp-controller="Auction" asp-action="New">New Auction</a>
+<!-- Dummy data in table -->
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Product</th>
+      <th scope="col">Seller</th>
+      <th scope="col">Top Bid</th>
+      <th scope="col">Time Remaining</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach (var a in Model.Auctions)
+      {
+        <tr>
+          <td><a asp-controller="Auction" asp-action="Show" asp-route-AuctionId="@a.Id" >@a.ProductName </a></td>
+          <td>@a.Creator.Username</td>
+          <td>@a.HighestBid</td>
+          <td>@a.EndDate</td>
+          <td><button><a asp-controller="Auction" asp-action="Delete" asp-route-AuctionId="@a.Id" >Delete</a></button></td>
+        </tr>
+      }
+  </tbody>
+</table>
