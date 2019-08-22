@@ -281,3 +281,6 @@ Projects/SignalRChat/appsettings.json
 Projects/SignalRChat/appsettings.Development.json
 SecurityIdentity/SecureLogReg/appsettings.json
 SecurityIdentity/SecureLogReg/appsettings.Development.json
+BeltExam/BeltExam2/appsettings.json
+.gitignore
+BeltExam/BeltExam2/appsettings.Development.json
