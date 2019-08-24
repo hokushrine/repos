@@ -43,18 +43,13 @@ namespace BeltExam2.Controllers
                     ModelState.AddModelError("Email", "Email already in use");
                     return View("Index");
                 }
-                // Check if Username is already in use
-                if(_dbContext.Users.Any(o => o.Username == newUser.Username))
-                {
-                    ModelState.AddModelError("Username", "Username already in use");
-                    return View("Index");
-                }
+
                 PasswordHasher<User> hasher = new PasswordHasher<User>();
                 newUser.Password = hasher.HashPassword(newUser, newUser.Password);
                 _dbContext.Add(newUser);
                 _dbContext.SaveChanges();
                 UserSession = newUser.Id;
-                return RedirectToAction("Index", "Auction");
+                return RedirectToAction("Index", "DojoActivity");
             }
             return View("Index");
         }
@@ -64,7 +59,7 @@ namespace BeltExam2.Controllers
             if(ModelState.IsValid)
             {
                 // Check if the email is in the db
-                var existingUser = _dbContext.Users.FirstOrDefault(u => u.Username == returningUser.UsernameAttempt);
+                var existingUser = _dbContext.Users.FirstOrDefault(u => u.Email == returningUser.EmailAttempt);
                 if(existingUser is null)
                 {
                     ModelState.AddModelError("Email", "Invalid Email/Password");
@@ -79,7 +74,7 @@ namespace BeltExam2.Controllers
                     return View("Index");
                 }
                 UserSession = existingUser.Id;
-                return RedirectToAction("Index", "Auction");
+                return RedirectToAction("Index", "DojoActivity");
             }
             return View("Index");
         }

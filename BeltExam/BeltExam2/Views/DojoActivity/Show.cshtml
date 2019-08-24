@@ -1,0 +1,23 @@
+@model AssociatedActivitiesViewModel
+
+<div class="row">
+    <div class="col-4">
+        <h1>@Model.SelectedDojoActivity.Title</h1>
+    </div>
+    <div class="col-2"><span>Event Coordinator: @Model.SelectedDojoActivity.Creator.Name</span></div>
+</div>
+<div>
+    <span>Description:</span>
+    <p>@Model.SelectedDojoActivity.Description</p>
+    <a asp-controller="DojoActivity"
+        asp-action="Join"
+        asp-route-DojoActivityId="@Model.SelectedDojoActivity.Id">Join</a>
+</div>
+
+Attendees:
+<ul>
+    @foreach (var person in Model.Attendees)
+        {
+            <li>@person.JoinedUser.Name</li>
+        }
+</ul>

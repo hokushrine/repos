@@ -3,14 +3,16 @@ using System;
 using BeltExam2.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BeltExam2.Migrations
 {
     [DbContext(typeof(BeltContext))]
-    partial class BeltContextModelSnapshot : ModelSnapshot
+    [Migration("20190823191229_AddKeyToAssociated")]
+    partial class AddKeyToAssociated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

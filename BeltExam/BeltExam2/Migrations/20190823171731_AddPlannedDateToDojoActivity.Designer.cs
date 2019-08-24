@@ -3,14 +3,16 @@ using System;
 using BeltExam2.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BeltExam2.Migrations
 {
     [DbContext(typeof(BeltContext))]
-    partial class BeltContextModelSnapshot : ModelSnapshot
+    [Migration("20190823171731_AddPlannedDateToDojoActivity")]
+    partial class AddPlannedDateToDojoActivity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,9 +50,7 @@ namespace BeltExam2.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<TimeSpan>("Duration");
-
-                    b.Property<DateTime>("EndTime");
+                    b.Property<DateTime>("Duration");
 
                     b.Property<DateTime>("PlannedDate");
 

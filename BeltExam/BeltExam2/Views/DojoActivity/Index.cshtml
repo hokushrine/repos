@@ -1,0 +1,52 @@
+@using Microsoft.AspNetCore.Http;
+@model DashboardViewModel
+
+
+<h1>Dojo ACtivity Center</h1>
+
+<a asp-controller="DojoActivity" asp-action="New">Add New Activity</a>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Activity</th>
+      <th scope="col">Date and Time</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Event Coordinator</th>
+      <th scope="col">No. of Participants</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var a in Model.UpcomingActivities)
+    {
+      <tr>
+        <td><a asp-controller="DojoActivity" asp-action="Show" asp-route-DojoActivityId="@a.Id" >@a.Title</a></td>
+        <td>@a.PlannedDate.ToShortDateString()</td>
+        <td>@a.Duration.Hours Hours</td>
+        <td>@a.Creator.Name</td>
+        <td>@a.AttendingUsers.Count()</td>
+        @{
+          if(a.Creator.Id == ViewBag.UserId)
+          {
+            <td><a asp-controller="DojoActivity"
+                asp-action="Delete"
+                asp-route-DojoActivityId="@a.Id">Delete</a></td>
+          }
+          else if(a.AttendingUsers.Any(r => r.UserID == ViewBag.UserId))
+          {
+            <td><a asp-controller="DojoActivity"
+              asp-action="Leave"
+              asp-route-DojoActivityId="@a.Id">Leave</a></td>
+          }
+          else
+          {
+            <td><a asp-controller="DojoActivity"
+                asp-action="Join"
+                asp-route-DojoActivityId="@a.Id"
+                asp-route-UserId="Join">Join</a></td>
+          }
+        }
+      </tr>
+    }
+  </tbody>
+</table>

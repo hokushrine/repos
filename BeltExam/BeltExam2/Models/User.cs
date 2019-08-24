@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BeltExam2.Models;
 
 namespace BeltExam2.Models
 {
@@ -10,13 +11,7 @@ namespace BeltExam2.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Username { get; set; }
-        [Required]
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-        [Required]
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
+        public string Name { get; set; }
         [Required]
         [EmailAddress]
         public string Email { get; set; }
@@ -30,16 +25,16 @@ namespace BeltExam2.Models
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
-        public string FullName => $"{FirstName} {LastName}";
-
         // Associations
+        public List<DojoActivity> JoinedActivties { get; set; }
     }
 
 
     public class LoginUser
     {
         [Required]
-        public string UsernameAttempt { get; set; }
+        [EmailAddress]
+        public string EmailAttempt { get; set; }
         [Required]
         [Display(Name = "Password")]
         [DataType(DataType.Password)]
