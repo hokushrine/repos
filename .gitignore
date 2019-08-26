@@ -285,3 +285,5 @@ BeltExam/BeltExam2/appsettings.json
 .gitignore
 BeltExam/BeltExam2/appsettings.Development.json
 SecurityIdentity/WebApp1
+Projects/FEHClone/appsettings.json
+Projects/FEHClone/appsettings.Development.json
