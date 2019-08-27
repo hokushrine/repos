@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FEHClone.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using BeltExam3.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace FEHClone
+namespace BeltExam3
 {
     public class Startup
     {
@@ -32,7 +32,8 @@ namespace FEHClone
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<FehContext>(o => o.UseMySql(Configuration["DBInfo:ConnectionString"]));
+            services.AddSession();
+            services.AddDbContext<BeltContext>(o => o.UseMySql(Configuration["DBInfo:ConnectionString"]));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

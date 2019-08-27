@@ -1,0 +1,35 @@
+@model IdeaViewModel
+
+<h1>Bright Ideas</h1>
+<div>
+    <form asp-controller="Idea" asp-action="Create" method="post">
+        <div class="form-group">
+            <div class="form-row">
+                <label asp-for="@Model.Idea.IdeaContent"></label>
+                <span asp-validation-for="@Model.Idea.IdeaContent"></span>
+                <textarea asp-for="@Model.Idea.IdeaContent" class="form-control"></textarea>
+            </div>
+        </div>
+        <button>Submit</button>
+    </form>
+</div>
+<hr>
+@foreach (var oldIdea in Model.Ideas)
+{
+    <div class="row">
+        <p>
+            <span><strong>@oldIdea.Creator.Alias</strong> says: </span>
+            @oldIdea.IdeaContent
+        </p>
+        
+        @if (@oldIdea.Creator.Id == ViewBag.UserId)
+        {
+            <span><a asp-controller="Idea" asp-action="Delete" asp-route-IdeaId="@oldIdea.Id">Delete</a> | </span>
+        }
+        else
+        {
+            <span><a asp-controller="Like" asp-action="AddLike" asp-route-IdeaId="@oldIdea.Id">Like</a> | </span>
+        }
+        <a asp-controller="Idea" asp-action="Show" asp-route-IdeaId="@oldIdea.Id">@oldIdea.ReceivedLikes.Count people liked this</a>
+    </div>
+}
