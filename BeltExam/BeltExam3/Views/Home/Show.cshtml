@@ -1,0 +1,10 @@
+@model User
+
+<div>
+    <p>Name: @Model.Name</p>
+    <p>Alias: @Model.Alias</p>
+    <p>Email: @Model.Email</p>
+    <hr>
+    <p>Number of Posts: @Model.PostedIdeas.Count</p>
+    <p>Total Number of Likes: @Model.GivenLikes.Count </p>
+</div>

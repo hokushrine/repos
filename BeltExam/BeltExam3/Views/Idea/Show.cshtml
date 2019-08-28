@@ -1,0 +1,23 @@
+@model SingleIdeaVM
+
+<div>
+    <span><a asp-controller="Home" asp-action="Show" asp-route-UserId="@Model.Idea.Creator.Id">@Model.Idea.Creator.Alias</a> said:</span>
+    <p>@Model.Idea.IdeaContent</p>
+</div>
+
+Users that have liked this:
+<table class="table table-striped table-bordered table-hover table-sm">
+    <thead>
+        <th>Alias</th>
+        <th>Name</th>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Idea.ReceivedLikes)
+        {
+            <tr>
+                <td><a asp-controller="Home" asp-action="Show" asp-route-UserId="@user.Creator.Id">@user.Creator.Alias</a></td>
+                <td>@user.Creator.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
