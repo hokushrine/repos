@@ -85,9 +85,10 @@ namespace SinglyLinkedLists
             Node current = Head;
             while (current.Next != null)
             {
-                current = current.Next;
                 System.Console.Write($"{current.Data} -> ");
+                current = current.Next;
             }
+            System.Console.Write($"{current.Data} -> ");
         }
         #endregion
         #region RemoveFirst
